@@ -8,8 +8,6 @@ library(tidyr)
 library(ggplot2)
 library(dplyr)
 
-# Source helpers ----
-source("setFactorOrder.R")
 
 # Reading in and organising dataset
 # read in sheet one

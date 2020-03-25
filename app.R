@@ -21,7 +21,8 @@ data = data[order(as.Date(data$Date, format="%d/%m/%Y")),]
 
 # assign order of variables to stay same as input
 sumLong =  data[grep("Summary", data$Grouping),]
-summaryData = dcast(sumLong, date ~ Variable, value.var = "Value")
+summaryData = pivot_wider(sumLong, names_from = Variable, values_from = c("Value"))
+summaryData = summaryData[,-c(1:2)]
 summaryData$DailyPercentIncrease = with(summaryData, 
                                         (`Total number of cases` / lag(`Total number of cases`) - 1) * 100)
 
